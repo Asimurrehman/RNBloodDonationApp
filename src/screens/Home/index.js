@@ -5,24 +5,80 @@ import axios from 'axios'
 import api from '../../config/api'
 
 
- class Home extends Component {
+class index extends Component {
+    // state = {
+    //     posts: null
+    // }
+
+    // async componentDidMount() {
+    //     await axios.get(`${api}/post/getall/`)
+    //         .then(response => {
+    //             // console.log('post response------->', response.data)
+    //             this.setState({ posts: response.data })
+    //         }).catch(err => {
+    //             console.log('post error--------->', err)
+    //         })
+    // }
+
+
     render() {
+        // console.log('POSTS---------->', this.state.posts)
         return (
-            <View style={styles.container}>
-                <Text>home scrennnn</Text>
-            </View>
+            <ScrollView style={styles.constainerStyle   }>
+                <Header headerText='Feed' />
+                <Text>{'\n'}</Text>
+                <Card>
+                    
+                    
+                            
+                                            
+                    <CardSection>
+                    <View style={{ alignSelf: 'center' }}>
+                        <Text style={{fontSize:20, fontWeight:'bold'}}>Name : Asim khan </Text>
+                        <Text style={{fontSize:15, fontWeight:'bold'}}>Urgency : 5</Text>
+                        <Text style={{fontSize:15, fontWeight:'bold'}}>Contact at : 03412286205</Text>
+                        <Text style={{fontSize:15, fontWeight:'bold'}}>Additional Instructions : yes we need blood so urgent</Text>
+                        <Text style={{fontSize:15, fontWeight:'bold'}}>Volunteer uptill now : 3</Text>
+            <Text>{'\n'}</Text>
+                        
+                        <View style={{ flexDirection: 'row' }}><Button>Volunteer</Button><Button>Comment</Button></View>
+                    </View>
+                </CardSection>
+                            
+                            
+                      
+                </Card>
+                <Card>
+                    
+                    
+                            
+                    <CardSection>
+                        <View style={{ alignSelf: 'center' }}>
+                            <Text style={{fontSize:20, fontWeight:'bold'}}>Name : Asim khan </Text>
+                            <Text style={{fontSize:15, fontWeight:'bold'}}>Urgency : 5</Text>
+                            <Text style={{fontSize:15, fontWeight:'bold'}}>Contact at : 03412286205</Text>
+                            <Text style={{fontSize:15, fontWeight:'bold'}}>Additional Instructions : yes we need blood so urgent</Text>
+                            <Text style={{fontSize:15, fontWeight:'bold'}}>Volunteer uptill now : 3</Text>
+                <Text>{'\n'}</Text>
+                            
+                            <View style={{ flexDirection: 'row' }}><Button>Volunteer</Button><Button>Comment</Button></View>
+                        </View>
+                    </CardSection>
+                  
+                
+          
+    </Card>
+            </ScrollView>
         )
     }
 }
 
+
 const styles = StyleSheet.create({
-    container: {
+    constainerStyle: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
+        marginTop:20
+    }
+})
 
-
-export default Home
+export default index

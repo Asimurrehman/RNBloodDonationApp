@@ -25,7 +25,7 @@ class index extends Component {
         // console.log('POSTS---------->', this.state.posts)
         return (
             <ScrollView style={styles.constainerStyle   }>
-                <Header headerText='My Blood Requests' />
+                <Header headerText='Notifications' />
                 <Text>{'\n'}</Text>
                 <Card>
                     
@@ -34,9 +34,9 @@ class index extends Component {
                                             
                     <CardSection>
                     <View style={{ alignSelf: 'center' }}>
-                        <Text style={{fontSize:20, fontWeight:'bold'}}>Required 3 Unit Of Blood at Ziauddin Hospital </Text>
+                        <Text style={{fontSize:20, fontWeight:'bold'}}> Asim Khan Required 3 Unit Of Blood at Ziauddin Hospital </Text>
     
-                        <Text style={{fontSize:15, fontWeight:'bold'}}>Status : Completed</Text>
+                    
             
                         
                        
@@ -52,9 +52,9 @@ class index extends Component {
                             
                     <CardSection>
                     <View style={{ alignSelf: 'center' }}>
-                    <Text style={{fontSize:20, fontWeight:'bold'}}>Required 1 Unit Of Blood at Jinnah Hospital </Text>
+                    <Text style={{fontSize:20, fontWeight:'bold'}}>Hakeem Required 1 Unit Of Blood at Jinnah Hospital </Text>
 
-                    <Text style={{fontSize:15, fontWeight:'bold'}}>Status : Not fulfilled</Text>
+                
         
                     
                    

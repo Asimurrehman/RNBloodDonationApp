@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
         borderColor: '#ddd',
         position: 'relative',
         // marginVertical:"5%"
+        margin:5
     }
 })
 

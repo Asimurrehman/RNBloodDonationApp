@@ -21,17 +21,17 @@ class SignIn extends Component {
 
     
 
-        console.log(email, password)
-        axios.post(`${api}/Login`, {
-            email: email,
-            password: password
-        }).then(response => {
-            console.log('login response------------>', response.data)
-            alert(' successfully Login')
-        }).catch(err => {
-            console.log('error---------->', err.response.data.message)
-            alert(err.response.data.message)
-        })
+        // console.log(email, password)
+        // axios.post(`${api}/Login`, {
+        //     email: email,
+        //     password: password
+        // }).then(response => {
+        //     console.log('login response------------>', response.data)
+        //     alert(' successfully Login')
+        // }).catch(err => {
+        //     console.log('error---------->', err.response.data.message)
+        //     alert(err.response.data.message)
+        // })
         this.props.navigation.navigate('App')
         
     }
@@ -41,9 +41,10 @@ class SignIn extends Component {
         const { email, Password } = this.state
 
         return (
+            
             <KeyboardAvoidingView enabled behavior='padding' style={containerStyle} >
                 <View style={logoContainer}>
-                    <Image source={require('../../assetss/logo.jpg')} style={logo} />
+                    <Image source={require('../../assetss/logo2.jpg')} style={logo} />
                 </View>
                 <View style={loginFormContainer}>
                     <Card>
@@ -56,7 +57,7 @@ class SignIn extends Component {
                 </CardSection>
 
                 <CardSection>
-                    <Button onPress={this._login.bind(this)}>Log In</Button>
+                    <Button onPress={this._login.bind(this)} >Sign In</Button>
                 </CardSection>
 
                     </Card>
@@ -90,14 +91,14 @@ const styles = StyleSheet.create({
     },
     logo: {
         width: 300,
-        height: 120,
+        height:250,
         resizeMode: 'stretch'
     },
     loginFormContainer: {
         // borderWidth:1,
-        margin: 5,
-        marginTop: 15,
-        marginBottom: 15
+        margin: 2,
+        marginTop: 10,
+        marginBottom: 10
     },
     createAccountContainer: {
         // paddingTop: 'auto',

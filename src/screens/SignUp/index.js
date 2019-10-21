@@ -22,18 +22,18 @@ class Signup extends Component {
     _signup() {
         const { FirstName, LastName, email, Password, BloodGroup } = this.state
         // console.log(firstName, lastName, email, password, bloodGroup)
-        axios.post(`${api}/SignUp`, {
-            FirstName: FirstName,
-            LastName: LastName,
-            email: email,
-            BloodGroup: BloodGroup,
-            Password: Password
-        }).then(response => {
-            console.log('signup response-------', response.data)
-            alert(' Successfully Created!')
-        }).catch(err => {
-            console.log(' error----------->', err)
-        })
+        // axios.post(`${api}/SignUp`, {
+        //     FirstName: FirstName,
+        //     LastName: LastName,
+        //     email: email,
+        //     BloodGroup: BloodGroup,
+        //     Password: Password
+        // }).then(response => {
+        //     console.log('signup response-------', response.data)
+        //     alert(' Successfully Created!')
+        // }).catch(err => {
+        //     console.log(' error----------->', err)
+        // })
 
     }
 
@@ -43,11 +43,11 @@ class Signup extends Component {
         const { FirstName, LastName, email, Password, BloodGroup } = this.state
         return (
             <ScrollView style={containerStyle}>
-                <KeyboardAvoidingView enabled behavior='padding' >
+                <KeyboardAvoidingView enabled behavior='padding'>
 
 
                     <View style={logoContainer}>
-                        <Image source={require('../../assetss/logo.jpg')} style={logo} />
+                        <Image source={require('../../assetss/logo1.jpg')} style={logo} />
                     </View>
 
                     <View style={createFormContainer}>
@@ -112,13 +112,16 @@ class Signup extends Component {
 
                     <View style={gotoSigninStyle}>
                         <Text>Already have an account? </Text>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('SignIn')}  >
+                        <View style={{ flexDirection: 'row' }}>
+
+                        <TouchableOpacity style={{ margin: 5 }} onPress={() => this.props.navigation.navigate('SignIn')}  >
                             <Text style={{ color: '#F50041', fontWeight: 'bold' }}>Sign In</Text>
                         </TouchableOpacity>
+                        </View>
                     </View>
 
                 </KeyboardAvoidingView>
-            </ScrollView >
+             </ScrollView >
         )
     }
 }
@@ -127,6 +130,7 @@ const styles = StyleSheet.create({
     containerStyle: {
         flex: 1,
         backgroundColor: '#fff',
+        marginTop:20
     },
     logoContainer: {
         alignItems: 'center',
@@ -144,15 +148,16 @@ const styles = StyleSheet.create({
         margin: 5,
         // flexGrow: 2,
         // borderWidth:1,
-        marginTop: 15,
-        marginBottom: 15
+        // marginTop: 50,
+        marginBottom: 30
     },
     gotoSigninStyle: {
         // paddingTop: 'auto',
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 20,
-        flexDirection: 'row',
+        flexDirection: 'column',
+
         // borderWidth: 1
     }
 })

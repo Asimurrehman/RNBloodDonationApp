@@ -7,6 +7,8 @@ import SignIn from '../screens/SignIn'
 import Homes from '../screens/Home'
 import MyRequests from '../screens/MyRequests'
 import PostRequirement from '../screens/PostRequirement'
+import Notifictions from '../screens/Notifications'
+import Settings from '../screens/Settings'
 
 
 const AuthNavigator=createSwitchNavigator({
@@ -27,6 +29,12 @@ const AppNavigator = createDrawerNavigator({
     },
     PostRequirement:{
         screen: PostRequirement
+    },
+    Notifictions:{
+        screen:Notifictions
+    },
+    Settings:{
+        screen:Settings
     }
   
 }, {
