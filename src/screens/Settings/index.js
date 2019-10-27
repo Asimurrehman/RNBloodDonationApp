@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, SafeAreaView, StyleSheet, ScrollView } from 'react-native'
 import { Header, Card, CardSection, Button } from '../../components/common'
+import { Appbar, Drawer } from "react-native-paper";
+import { DrawerActions } from 'react-navigation-drawer';
 import axios from 'axios'
 import api from '../../config/api'
 
@@ -9,7 +11,16 @@ import api from '../../config/api'
     render() {
         return (
             <View style={styles.container}>
-                <Text>Settings scrennnn</Text>
+              <Appbar.Header >
+                    <Appbar.Action
+                        icon="menu"
+                        onPress={() =>
+                            this.props.navigation.dispatch(DrawerActions.toggleDrawer())
+                        }
+                    />
+                    <Appbar.Content title="Settings" />
+                </Appbar.Header>
+                
             </View>
         )
     }
@@ -18,9 +29,7 @@ import api from '../../config/api'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+  
     },
 });
 

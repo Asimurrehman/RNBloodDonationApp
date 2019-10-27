@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Image, ScrollView, Picker, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Alert, AsyncStorage, Image, ScrollView, Picker, ActivityIndicator } from 'react-native';
 import { Input, Card, CardSection, Button, Spinner } from '../../components/common';
 import api from '../../config/api'
 import axios from 'axios'
-
+import Toast, { DURATION } from 'react-native-easy-toast'
 
 class Signup extends Component {
 
@@ -21,6 +21,54 @@ class Signup extends Component {
 
     _signup() {
         const { FirstName, LastName, email, Password, BloodGroup } = this.state
+        if (FirstName.length === 0 || LastName.length === 0 || email.length === 0 || BloodGroup.length === 0 || Password.length === 0) {
+            // this.refs.toes.show('Fill All Field First')
+            Alert.alert(
+                'Oops Error Ocurr ?',
+                'Please fill all fields',
+                [
+                    { text: 'OK', onPress: () => console.log('OK') },
+                ],
+
+            );
+
+
+        }
+        else {
+            axios.post(`${api}/SignUp`, {
+                FirstName: FirstName,
+                LastName: LastName,
+                email: email,
+                BloodGroup: BloodGroup,
+                Password: Password
+            }).then(response => {
+                console.log('signup response-------', response.data)
+                const user = response.data
+                AsyncStorage.setItem('user', JSON.stringify(user))
+                Alert.alert(
+                    'Good Job',
+                    'User Added successfully',
+                    [
+                        { text: 'OK', onPress: () => console.log('OK') },
+                    ],
+
+                );
+
+
+                this.props.navigation.navigate('MainScreen', { user: JSON.stringify(user) })
+            }).catch(err => {
+                Alert.alert(
+                    'Oops Error Ocurr ?',
+                    err,
+                    [
+                        { text: 'OK', onPress: () => console.log('OK') },
+                    ],
+
+                );
+
+
+            })
+        }
         // console.log(firstName, lastName, email, password, bloodGroup)
         // axios.post(`${api}/SignUp`, {
         //     FirstName: FirstName,
@@ -104,7 +152,7 @@ class Signup extends Component {
 
 
                             <CardSection>
-                                <Button  onPress={this._signup.bind(this)} >Sign Up</Button>
+                                <Button onPress={this._signup.bind(this)} >Sign Up</Button>
                             </CardSection>
                         </Card>
                     </View>
@@ -114,14 +162,14 @@ class Signup extends Component {
                         <Text>Already have an account? </Text>
                         <View style={{ flexDirection: 'row' }}>
 
-                        <TouchableOpacity style={{ margin: 5 }} onPress={() => this.props.navigation.navigate('SignIn')}  >
-                            <Text style={{ color: '#F50041', fontWeight: 'bold' }}>Sign In</Text>
-                        </TouchableOpacity>
+                            <TouchableOpacity style={{ margin: 5 }} onPress={() => this.props.navigation.navigate('SignIn')}  >
+                                <Text style={{ color: '#F50041', fontWeight: 'bold' }}>Sign In</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
 
                 </KeyboardAvoidingView>
-             </ScrollView >
+            </ScrollView >
         )
     }
 }
@@ -130,7 +178,7 @@ const styles = StyleSheet.create({
     containerStyle: {
         flex: 1,
         backgroundColor: '#fff',
-        marginTop:20
+        marginTop: 20
     },
     logoContainer: {
         alignItems: 'center',
